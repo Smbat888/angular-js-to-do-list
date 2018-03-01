@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>ToDo</title>
+
+		<!-- Bootstrap 3 -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<link href="css/main.css" rel="stylesheet">
+	</head>
+	<body ng-app="App">
+		<!-- Title -->
+		<div class="container">
+			<h1>ToDo</h1>
+		</div>
+
+		<!-- Controls -->
+		<div class="container task-container" ng-controller="AppController">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class=" form task-form">
+				<div class="input-group">
+					<input type="text" class="form-control" ng-model="task">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button" ng-click="addTask()"><span
+								class="glyphicon glyphicon-plus"></span> Add Task</button>
+						<button class="btn btn-default buttton-delete-tasks" type="button" ng-click="deleteTasks()"><span
+							class="glyphicon glyphicon-remove"></span></button>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Task blocks -->
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div>
+				<ul class="list-group" ng-show="tasks.length > 0">
+					<li class="col-lg-3 col-md-3 col-sm-3 col-xs-12s list-group-item task-item" ng-repeat="todo in tasks"> 
+						<div class="task-item-content">
+							<div class="item-controls">
+								<span class="pull-right task-controls">
+									<input type="checkbox" ng-model="todo.checked">
+									<button class="btn btn-danger btn-xs">
+										<span class="glyphicon glyphicon-remove" ng-click="deleteTask($index)"></span>
+									</button>
+								</span>
+							</div>
+							<textarea class="form-control task-desc" rows="5" placeholder="Task description" ng-model="todo.task" required></textarea>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script src="js/app.js"></script>
+	</body>
+</html>
